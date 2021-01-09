@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 
 const Shouts = require("../shouts/shouts-model.js");
@@ -7,7 +9,8 @@ const router = express.Router();
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  res.status(200).json({ api: "up1" });
+  const message = process.env.MESSAGE;
+  res.status(200).json({ message });
 });
 
 router.get("/shouts", (req, res, next) => {
